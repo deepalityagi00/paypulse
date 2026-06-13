@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,13 +25,28 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # Set the DJANGO_SECRET_KEY environment variable in production.
-SECRET_KEY = os.environ.get(
+SECRET_KEY = os.getenv(
     'DJANGO_SECRET_KEY',
     'django-insecure-change-me-in-production',
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
+DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
+
+
+OPENAI_API_KEY=os.getenv('OPENAI_API_KEY', '')
+FERNET_KEY=os.getenv('FERNET_KEY', '')
+
+# GMAIL
+GMAIL_CLIENT_ID=os.getenv('GMAIL_CLIENT_ID', '')
+GMAIL_CLIENT_SECRET=os.getenv('GMAIL_CLIENT_SECRET', '')
+GMAIL_REDIRECT_URI=os.getenv('GMAIL_REDIRECT_URI', '')
+GMAIL_SCOPES=os.getenv('GMAIL_SCOPES', '')
+GMAIL_AUTH_URL=os.getenv('GMAIL_AUTH_URL', '')
+GMAIL_TOKEN_URL=os.getenv('GMAIL_TOKEN_URL', '')
+
+# Stripe 
+STRIPE_SECRET_KEY=os.getenv('STRIPE_SECRET_KEY', '')
 
 ALLOWED_HOSTS = []
 
@@ -46,6 +64,7 @@ INSTALLED_APPS = [
     'accounts',
     'invoices',
     'gmail_integration',
+    'rest_framework'
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
@@ -134,4 +153,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', 'redis://localhost:6379/0')
 CELERY_RESULT_BACKEND = os.environ.get('CELERY_RESULT_BACKEND', 'redis://localhost:6379/0')
 CELERY_TIMEZONE = os.environ.get('CELERY_TIMEZONE', 'UTC')
-CELERY_ENABLE_UTC = os.environ.get('CELERY_ENABLE_UTC', 'True') == 'True'   
+CELERY_ENABLE_UTC = os.environ.get('CELERY_ENABLE_UTC', 'True') == 'True' 

@@ -19,7 +19,7 @@ class GmailCredential(models.Model):
         related_name="gmail_cred",
     )
     name = models.CharField(max_length=100)
-    email = models.EmailField()
+    email = models.EmailField(null=True)
     status = models.CharField(max_length=20,choices=CredentialStatus.choices, default=CredentialStatus.ACTIVE)
     encrypted_access_token = models.TextField()
     encrypted_refresh_token = models.TextField()
