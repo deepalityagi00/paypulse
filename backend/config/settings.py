@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'accounts',
     'invoices',
     'gmail_integration',
+    'rest_framework'
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
