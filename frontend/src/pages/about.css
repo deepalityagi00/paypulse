@@ -1,0 +1,104 @@
+.about-hero {
+  background:
+    radial-gradient(900px 380px at 15% -10%, var(--indigo-50), transparent 60%),
+    radial-gradient(700px 340px at 100% 0%, #ecfdf5, transparent 55%);
+  padding-block: clamp(48px, 8vw, 88px);
+}
+.about-hero__lead {
+  max-width: 720px;
+  font-size: 1.12rem;
+  color: var(--text-soft);
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+.about-stat {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 20px;
+  box-shadow: var(--shadow-sm);
+}
+.about-stat__value {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--brand);
+  letter-spacing: -0.02em;
+}
+.about-stat__label {
+  color: var(--text-soft);
+  font-size: 0.98rem;
+}
+
+.about-values {
+  grid-template-columns: repeat(2, 1fr);
+}
+.about-value__icon {
+  font-size: 1.6rem;
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: var(--indigo-50);
+  margin-bottom: 14px;
+}
+.about-value h3 {
+  margin-bottom: 6px;
+}
+.about-value p {
+  margin: 0;
+  color: var(--text-soft);
+}
+
+.about-mission {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+}
+.about-mission p {
+  color: var(--text-soft);
+  font-size: 1.05rem;
+  margin-bottom: 24px;
+}
+.about-audience-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.about-audience-list li {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--brand);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+}
+.about-audience-list strong {
+  display: block;
+  font-size: 1.05rem;
+  margin-bottom: 2px;
+}
+.about-audience-list span {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 860px) {
+  .about-stats,
+  .about-values {
+    grid-template-columns: 1fr;
+  }
+  .about-mission {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

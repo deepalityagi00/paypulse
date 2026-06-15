@@ -37,6 +37,9 @@ DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 OPENAI_API_KEY=os.getenv('OPENAI_API_KEY', '')
 FERNET_KEY=os.getenv('FERNET_KEY', '')
 
+# URL of the React frontend (used to redirect back after OAuth).
+FRONTEND_URL=os.getenv('FRONTEND_URL', 'http://localhost:5173')
+
 # GMAIL
 GMAIL_CLIENT_ID=os.getenv('GMAIL_CLIENT_ID', '')
 GMAIL_CLIENT_SECRET=os.getenv('GMAIL_CLIENT_SECRET', '')

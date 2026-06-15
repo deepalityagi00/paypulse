@@ -1,0 +1,120 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: saturate(160%) blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.nav--scrolled {
+  border-bottom-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  color: var(--ink-900);
+}
+.logo__accent {
+  color: var(--brand);
+}
+.logo--light,
+.logo--light .logo__accent {
+  color: var(--white);
+}
+.logo__mark {
+  flex: none;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav__link {
+  font-weight: 550;
+  font-size: 0.96rem;
+  color: var(--slate-600);
+  transition: color 0.15s ease;
+}
+.nav__link:hover,
+.nav__link.active {
+  color: var(--ink-900);
+}
+
+.nav__cta {
+  margin-left: 6px;
+  padding: 11px 18px;
+}
+
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.nav__toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--ink-900);
+  border-radius: 2px;
+}
+
+@media (max-width: 860px) {
+  .nav__toggle {
+    display: flex;
+  }
+  .nav__links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    padding: 16px 24px 24px;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    transform: translateY(-12px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  .nav__links.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav__link {
+    padding: 10px 4px;
+    font-size: 1.05rem;
+    border-bottom: 1px solid var(--slate-100);
+  }
+  .nav__cta {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+}
