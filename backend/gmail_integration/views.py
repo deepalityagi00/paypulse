@@ -22,7 +22,7 @@ User = get_user_model()
 # Session key under which the OAuth state is stashed between the init and
 # callback requests for CSRF protection.
 OAUTH_STATE_SESSION_KEY = "gmail_oauth_state"
-
+OAUTH_CODE_VERIFIER ="oauth_code_verifier"
 
 def _frontend_redirect(**params):
     """Redirect to the SPA's sign-in page, carrying a status in the query."""
@@ -51,6 +51,7 @@ class GmailAuthInitView(APIView):
             login_hint=request.query_params.get("login_hint", ""),
         )
         request.session[OAUTH_STATE_SESSION_KEY] = state
+        request.session[OAUTH_CODE_VERIFIER] = flow.code_verifier
         return redirect(authorization_url)
 
 
@@ -121,7 +122,9 @@ class GmailCallbackView(APIView):
             return _frontend_redirect(gmail="error", reason="invalid_state")
 
         try:
+            code_verifier = request.session.get(OAUTH_CODE_VERIFIER)
             flow = build_flow(state=expected_state)
+            flow.code_verifier = code_verifier
             flow.fetch_token(code=code)
             credentials = flow.credentials
             email = get_profile_email(credentials)
